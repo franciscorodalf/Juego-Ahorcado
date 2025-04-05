@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="293.0" prefWidth="300" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.backend.controller.editarUsuarioController">
+    
+    <VBox alignment="CENTER" layoutX="25" layoutY="20" prefWidth="250" spacing="15">
+        
+        <GridPane alignment="CENTER_LEFT" hgap="10" vgap="10">
+            <Label text="User:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="usernameField" promptText="User" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="emailField1" promptText="User/Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="emailField2" promptText="User/Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <PasswordField fx:id="passwordField1" promptText="******" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <PasswordField fx:id="passwordField2" promptText="******" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <Button fx:id="guardarBtn" maxWidth="150" style="-fx-background-color: #555; -fx-text-fill: white;" text="Guardar" />
+        <Button fx:id="regresarBtn" maxWidth="150" onAction="#ClickbuttonRegresar" style="-fx-background-color: #555; -fx-text-fill: white;" text="Regresar" />
+    </VBox>
+</AnchorPane>

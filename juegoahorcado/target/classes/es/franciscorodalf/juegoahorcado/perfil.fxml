@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="313.0" prefWidth="300" style="-fx-background-color: white;" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="es.franciscorodalf.juegoahorcado.backend.controller.perfilController">
+    
+    <VBox alignment="CENTER" layoutX="25" layoutY="30" prefWidth="250" spacing="20"
+          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        
+        <GridPane alignment="CENTER" hgap="10" vgap="15">
+            <Label text="User:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="usernameField" promptText="User" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="emailField" promptText="User/Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Nivel:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <PasswordField fx:id="nivelField" promptText="******" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+
+        <Button fx:id="editarBtn" text="Editar" onAction="#handleEditar"
+                maxWidth="150" style="-fx-background-color: #555; -fx-text-fill: white;" />
+        <Button fx:id="jugarBtn" text="Jugar" onAction="#handleJugar"
+                maxWidth="150" style="-fx-background-color: #555; -fx-text-fill: white;" />
+        <Button fx:id="regresarBtn" text="Regresar" onAction="#handleRegresar"
+                maxWidth="150" style="-fx-background-color: #555; -fx-text-fill: white;" />
+
+    </VBox>
+</AnchorPane>
