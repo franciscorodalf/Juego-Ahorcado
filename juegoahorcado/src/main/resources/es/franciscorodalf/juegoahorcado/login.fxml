@@ -5,7 +5,7 @@
 <?import javafx.geometry.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="es.franciscorodalf.juegoahorcado.backend.controller.loginController"
+            fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.loginController"
             prefWidth="300" prefHeight="400" style="-fx-background-color: white;">
 
     <VBox alignment="CENTER" spacing="15" layoutX="25" layoutY="30" prefWidth="250">

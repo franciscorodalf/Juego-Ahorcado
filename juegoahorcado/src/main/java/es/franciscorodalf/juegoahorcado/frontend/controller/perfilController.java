@@ -1,8 +1,8 @@
-package es.franciscorodalf.juegoahorcado.backend.controller;
+package es.franciscorodalf.juegoahorcado.frontend.controller;
 
+import es.franciscorodalf.juegoahorcado.backend.model.UsuarioEntity;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,21 +14,26 @@ import java.io.IOException;
 
 public class perfilController {
 
-    @FXML private TextField usernameField;
-    @FXML private TextField emailField;
-    @FXML private PasswordField nivelField;
-
     @FXML
-    private void initialize() {
-        // Aquí podrías cargar los datos del usuario desde sesión o base de datos
-        usernameField.setText("usuarioEjemplo");
-        emailField.setText("usuario@correo.com");
-        nivelField.setText("FÁCIL");
+    private TextField usernameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField nivelField;
 
-        // Para evitar edición directa desde esta vista
-        usernameField.setEditable(false);
-        emailField.setEditable(false);
-        nivelField.setEditable(false);
+    private UsuarioEntity usuario;
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+        cargarDatosUsuario();
+    }
+
+    private void cargarDatosUsuario() {
+        if (usuario != null) {
+            usernameField.setText(usuario.getNombre());
+            emailField.setText(usuario.getEmail());
+            nivelField.setText(usuario.getNivel()); 
+        }
     }
 
     @FXML

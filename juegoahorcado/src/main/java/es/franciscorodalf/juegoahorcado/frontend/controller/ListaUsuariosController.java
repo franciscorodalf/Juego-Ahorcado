@@ -1,4 +1,4 @@
-package es.franciscorodalf.juegoahorcado.backend.controller;
+package es.franciscorodalf.juegoahorcado.frontend.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

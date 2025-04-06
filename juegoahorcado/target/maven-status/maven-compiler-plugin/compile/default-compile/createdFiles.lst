@@ -1,1 +1,13 @@
+es/franciscorodalf/juegoahorcado/frontend/controller/loginController.class
+es/franciscorodalf/juegoahorcado/frontend/controller/editarUsuarioController.class
+es/franciscorodalf/juegoahorcado/frontend/controller/RecuperarController.class
+es/franciscorodalf/juegoahorcado/config/ConfigManager.class
+es/franciscorodalf/juegoahorcado/backend/model/abstractas/Conexion.class
+es/franciscorodalf/juegoahorcado/frontend/controller/juegoController.class
+es/franciscorodalf/juegoahorcado/backend/model/UsuarioServiceModel.class
+es/franciscorodalf/juegoahorcado/frontend/controller/ListaUsuariosController.class
+es/franciscorodalf/juegoahorcado/frontend/controller/registroController.class
+es/franciscorodalf/juegoahorcado/backend/model/UsuarioEntity.class
+es/franciscorodalf/juegoahorcado/frontend/controller/perfilController.class
+es/franciscorodalf/juegoahorcado/config/ConfigManager$ConfigProperties.class
 es/franciscorodalf/juegoahorcado/Main.class

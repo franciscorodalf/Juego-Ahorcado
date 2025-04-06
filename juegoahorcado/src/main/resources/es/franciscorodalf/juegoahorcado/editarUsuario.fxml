@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="293.0" prefWidth="300" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.backend.controller.editarUsuarioController">
+<AnchorPane prefHeight="293.0" prefWidth="300" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.editarUsuarioController">
     
     <VBox alignment="CENTER" layoutX="25" layoutY="20" prefWidth="250" spacing="15">
         

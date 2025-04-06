@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="481.0" prefWidth="526.0" style="-fx-background-color: white;" 
             xmlns="http://javafx.com/javafx/23.0.1" 
             xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="es.franciscorodalf.juegoahorcado.backend.controller.ListaUsuariosController">
+            fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.ListaUsuariosController">
 
     <VBox alignment="CENTER" layoutX="25" layoutY="20" spacing="20" prefWidth="526.0"
           AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"

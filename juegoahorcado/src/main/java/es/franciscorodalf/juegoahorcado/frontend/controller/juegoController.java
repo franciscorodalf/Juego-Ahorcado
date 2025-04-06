@@ -1,4 +1,4 @@
-package es.franciscorodalf.juegoahorcado.backend.controller;
+package es.franciscorodalf.juegoahorcado.frontend.controller;
 
 import java.io.IOException;
 
@@ -10,11 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class editarUsuarioController {
+public class juegoController {
     
 
-     @FXML
-    private void ClickbuttonRegresar(ActionEvent event) throws IOException {
+    @FXML
+    private void clickbtnRegresar(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/franciscorodalf/juegoahorcado/perfil.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

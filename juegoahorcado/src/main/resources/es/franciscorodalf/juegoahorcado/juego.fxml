@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="445.0" prefWidth="300" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.backend.controller.juegoController">
+<AnchorPane prefHeight="445.0" prefWidth="300" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.juegoController">
     
     <VBox alignment="CENTER" layoutX="25" layoutY="20" prefWidth="250" spacing="15">
 
