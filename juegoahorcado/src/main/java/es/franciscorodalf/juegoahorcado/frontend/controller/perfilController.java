@@ -32,7 +32,7 @@ public class perfilController {
         if (usuario != null) {
             usernameField.setText(usuario.getNombre());
             emailField.setText(usuario.getEmail());
-            nivelField.setText(usuario.getNivel()); 
+            nivelField.setText(usuario.getNivel());
         }
     }
 
@@ -43,7 +43,15 @@ public class perfilController {
 
     @FXML
     private void handleJugar(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/es/franciscorodalf/juegoahorcado/juego.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/franciscorodalf/juegoahorcado/juego.fxml"));
+        Parent root = loader.load();
+
+        juegoController controller = loader.getController();
+        controller.setUsuario(this.usuario);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML

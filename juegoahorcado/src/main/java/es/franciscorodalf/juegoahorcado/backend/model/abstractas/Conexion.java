@@ -1,6 +1,7 @@
 package es.franciscorodalf.juegoahorcado.backend.model.abstractas;
 
 import java.io.File;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +12,17 @@ public abstract class Conexion {
     private static Connection connection;
 
     public Conexion() {
-        this.rutaArchivoBD = "../src/main/resources/database/usuarios.db";
+        try {
+            URL dbUrl = getClass().getResource("/database/usuarios.db");
+            if (dbUrl != null) {
+                this.rutaArchivoBD = new File(dbUrl.toURI()).getAbsolutePath();
+            } else {
+                throw new RuntimeException("No se encontró la base de datos.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error al cargar la base de datos.", e);
+        }
     }
 
     public Conexion(String unaRutaArchivoBD) throws SQLException {

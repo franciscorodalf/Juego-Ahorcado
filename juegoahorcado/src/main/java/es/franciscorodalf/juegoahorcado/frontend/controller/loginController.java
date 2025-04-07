@@ -14,9 +14,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 
 public class loginController {
 
@@ -28,19 +28,20 @@ public class loginController {
 
     private UsuarioServiceModel servicioUsuario;
 
-    @FXML
-    public void initialize() {
-        try {
-            URL dbUrl = getClass().getResource("/database/usuarios.db");
-            if (dbUrl != null) {
-                servicioUsuario = new UsuarioServiceModel(dbUrl.getPath());
-            } else {
-                System.err.println("No se encontró la base de datos.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+@FXML
+public void initialize() {
+    try {
+        URL dbUrl = getClass().getResource("/database/usuarios.db");
+        if (dbUrl != null) {
+            String path = new File(dbUrl.toURI()).getAbsolutePath();
+            servicioUsuario = new UsuarioServiceModel(path);
+        } else {
+            System.err.println("❌ No se encontró la base de datos.");
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
 
     @FXML
     private void handleAceptar(ActionEvent event) throws IOException {
