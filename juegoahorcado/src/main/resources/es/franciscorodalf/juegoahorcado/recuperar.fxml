@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.RecuperarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="325.0" stylesheets="@../../../css/loginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.RecuperarController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="208.0" layoutY="56.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -25,8 +25,8 @@
                   </TextField>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Enviar" />
-            <Button mnemonicParsing="false" onAction="#clickVolver" text="Volver" />
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" text="Enviar" />
+            <Button mnemonicParsing="false" onAction="#clickVolver" prefHeight="38.0" prefWidth="55.0" text="Volver" />
          </children>
       </VBox>
    </children>

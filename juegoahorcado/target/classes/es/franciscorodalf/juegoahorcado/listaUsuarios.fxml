@@ -6,24 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="481.0" prefWidth="526.0" style="-fx-background-color: white;" 
-            xmlns="http://javafx.com/javafx/23.0.1" 
-            xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.ListaUsuariosController">
+<AnchorPane prefHeight="481.0" prefWidth="526.0" style="-fx-background-color: white;" stylesheets="@../../../css/loginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.ListaUsuariosController">
 
-    <VBox alignment="CENTER" layoutX="25" layoutY="20" spacing="20" prefWidth="526.0"
-          AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+    <VBox alignment="CENTER" layoutX="25" layoutY="20" prefWidth="526.0" spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
         <TableView fx:id="tablaUsuarios" prefHeight="350" prefWidth="500">
             <columns>
-                <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="160.0" />
-                <TableColumn fx:id="colEmail" text="Email" prefWidth="200.0" />
-                <TableColumn fx:id="colNivel" text="Nivel" prefWidth="120.0" />
+                <TableColumn fx:id="colUsuario" prefWidth="160.0" text="Usuario" />
+                <TableColumn fx:id="colEmail" prefWidth="200.0" text="Email" />
+                <TableColumn fx:id="colNivel" prefWidth="120.0" text="Nivel" />
             </columns>
         </TableView>
 
-        <Button fx:id="btnRegresar" text="Regresar" onAction="#handleRegresar" 
-                maxWidth="150" style="-fx-background-color: #555; -fx-text-fill: white;" />
+        <Button fx:id="btnRegresar" maxWidth="150" onAction="#handleRegresar" text="Regresar" />
     </VBox>
 </AnchorPane>

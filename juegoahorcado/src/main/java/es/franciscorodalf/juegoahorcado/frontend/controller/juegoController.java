@@ -159,7 +159,7 @@ public class juegoController extends Conexion {
         }
 
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement("UPDATE usuarios SET id_nivel = ? WHERE email = ?")) {
+                PreparedStatement stmt = conn.prepareStatement("UPDATE usuarios SET id_nivel = ? WHERE email = ?")) {
             stmt.setInt(1, nuevoNivel);
             stmt.setString(2, usuario.getEmail());
             stmt.executeUpdate();
@@ -193,6 +193,7 @@ public class juegoController extends Conexion {
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
+        
     }
 
     private void dibujarBase() {

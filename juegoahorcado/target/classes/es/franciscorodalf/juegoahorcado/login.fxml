@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.loginController"
-            prefWidth="300" prefHeight="400" style="-fx-background-color: white;">
+<AnchorPane prefHeight="400" prefWidth="300" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.loginController">
 
-    <VBox alignment="CENTER" spacing="15" layoutX="25" layoutY="30" prefWidth="250">
+    <VBox alignment="CENTER" layoutX="25" layoutY="30" prefWidth="250" spacing="15">
 
         <!-- Campo de Usuario -->
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="Usuario:"/>
-            <TextField fx:id="usernameField" promptText="Nombre de usuario"/>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Usuario:" />
+            <TextField fx:id="usernameField" promptText="Nombre de usuario" />
         </HBox>
 
         <!-- Campo de Contraseña -->
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="Contraseña:"/>
-            <PasswordField fx:id="passwordField" promptText="Contraseña"/>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Contraseña:" />
+            <PasswordField fx:id="passwordField" promptText="Contraseña" />
         </HBox>
 
         <!-- Botones principales -->
-        <Button text="Aceptar" fx:id="btnAceptar" onAction="#handleAceptar" maxWidth="200"/>
-        <Button text="Registrar" fx:id="btnRegistrar" onAction="#handleRegistrar" maxWidth="200"/>
-        <Button text="Listar Usuarios" fx:id="btnListarUsuarios" onAction="#handleListarUsuarios" maxWidth="200"/>
-        <Button text="Recuperar Contraseña" fx:id="btnRecuperar" onAction="#handleRecuperar" maxWidth="200"/>
+        <Button fx:id="btnAceptar" maxWidth="200" onAction="#handleAceptar" text="Aceptar" />
+        <Button fx:id="btnRegistrar" maxWidth="200" onAction="#handleRegistrar" text="Registrar" />
+        <Button fx:id="btnListarUsuarios" maxWidth="200" onAction="#handleListarUsuarios" text="Listar Usuarios" />
+        <Button fx:id="btnRecuperar" maxWidth="200" onAction="#handleRecuperar" text="Recuperar Contraseña" />
 
     </VBox>
+   <stylesheets>
+      <URL value="@../../../css/style.css" />
+      <URL value="@../../../css/loginStyle.css" />
+   </stylesheets>
 </AnchorPane>
