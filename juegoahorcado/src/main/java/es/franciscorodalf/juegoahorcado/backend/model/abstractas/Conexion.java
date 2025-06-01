@@ -6,11 +6,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Clase abstracta que proporciona funcionalidades básicas para la conexión a la base de datos SQLite.
+ * Todos los servicios que requieren acceso a datos deben extender esta clase.
+ */
 public abstract class Conexion {
 
     private String rutaArchivoBD;
     private static Connection connection;
 
+    /**
+     * Constructor por defecto que localiza automáticamente la base de datos en los recursos
+     */
     public Conexion() {
         try {
             URL dbUrl = getClass().getResource("/database/usuarios.db");
@@ -25,6 +32,11 @@ public abstract class Conexion {
         }
     }
 
+    /**
+     * Constructor que permite especificar la ruta de la base de datos
+     * @param unaRutaArchivoBD Ruta al archivo de la base de datos
+     * @throws SQLException Si la ruta no es válida o el archivo no existe
+     */
     public Conexion(String unaRutaArchivoBD) throws SQLException {
         if (unaRutaArchivoBD == null || unaRutaArchivoBD.isEmpty()) {
             throw new SQLException("El fichero es nulo o vacío");
@@ -38,10 +50,18 @@ public abstract class Conexion {
         this.rutaArchivoBD = unaRutaArchivoBD;
     }
 
+    /**
+     * Obtiene la ruta del archivo de la base de datos
+     * @return Ruta al archivo de la base de datos
+     */
     public String getRutaArchivoBD() {
         return this.rutaArchivoBD;
     }
 
+    /**
+     * Obtiene o crea una conexión a la base de datos
+     * @return Objeto Connection para interactuar con la base de datos
+     */
     public Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
@@ -55,10 +75,19 @@ public abstract class Conexion {
         return connection;
     }
 
+    /**
+     * Establece una conexión a la base de datos
+     * @return Objeto Connection para interactuar con la base de datos
+     * @throws SQLException Si ocurre un error al conectar
+     */
     public Connection conectar() throws SQLException {
         return getConnection();
     }
 
+    /**
+     * Cierra la conexión a la base de datos si está abierta
+     * @throws SQLException Si ocurre un error al cerrar la conexión
+     */
     public static void cerrar() throws SQLException {
         if (connection != null && !connection.isClosed()) {
             connection.close();

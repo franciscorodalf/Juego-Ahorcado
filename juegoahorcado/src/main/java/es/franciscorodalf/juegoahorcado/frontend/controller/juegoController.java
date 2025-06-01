@@ -21,34 +21,49 @@ import javafx.scene.control.Alert.AlertType;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
+/**
+ * Controlador para la pantalla del juego del ahorcado.
+ * Gestiona la lógica del juego, incluyendo la selección de palabras,
+ * validación de letras y dibujo del ahorcado.
+ */
 public class juegoController extends Conexion {
 
     @FXML
-    private Label usernameLabel;
+    private Label usernameLabel;     
     @FXML
-    private Label nivelLabel;
+    private Label nivelLabel;         
     @FXML
-    private Label palabraLabel;
+    private Label palabraLabel;       
     @FXML
-    private TextField inputLetra;
+    private TextField inputLetra;     
     @FXML
-    private Canvas canvas;
+    private Canvas canvas;          
     @FXML
-    private Button btnProbar;
+    private Button btnProbar;         
+    @FXML
+    private Label letrasUsadasLabel; 
 
-    private UsuarioEntity usuario;
-    private String palabraSecreta;
-    private StringBuilder palabraOculta;
-    private Set<Character> letrasUsadas = new HashSet<>();
-    private int errores = 0;
-    private final int MAX_ERRORES = 6;
+    private UsuarioEntity usuario;          
+    private String palabraSecreta;           
+    private StringBuilder palabraOculta;      
+    private Set<Character> letrasUsadas = new HashSet<>();  
+    private int errores = 0;                 
+    private final int MAX_ERRORES = 6;       
 
+    /**
+     * Método de inicialización que se ejecuta al cargar la vista
+     */
     @FXML
     public void initialize() {
         btnProbar.setOnAction(this::probarLetra);
     }
 
+    /**
+     * Establece el usuario actual y configura la interfaz con sus datos
+     * @param usuario Usuario actual del juego
+     */
     public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
         usernameLabel.setText(usuario.getNombre());
@@ -56,6 +71,9 @@ public class juegoController extends Conexion {
         inicializarJuego();
     }
 
+    /**
+     * Inicializa o reinicia el juego con una nueva palabra
+     */
     private void inicializarJuego() {
         palabraSecreta = obtenerPalabraAleatoria(usuario.getNivel());
         palabraOculta = new StringBuilder("_");
@@ -65,9 +83,31 @@ public class juegoController extends Conexion {
         palabraLabel.setText("Palabra: " + palabraOculta);
         errores = 0;
         letrasUsadas.clear();
+        actualizarLetrasUsadas();
         dibujarBase();
     }
 
+    /**
+     * Actualiza el label que muestra las letras que ya se han utilizado
+     */
+    private void actualizarLetrasUsadas() {
+        if (letrasUsadas.isEmpty()) {
+            letrasUsadasLabel.setText("-");
+        } else {
+            // Convertir el conjunto de letras usadas a una cadena ordenada
+            String letrasStr = letrasUsadas.stream()
+                                          .sorted()
+                                          .map(String::valueOf)
+                                          .collect(Collectors.joining(", "));
+            letrasUsadasLabel.setText(letrasStr);
+        }
+    }
+
+    /**
+     * Obtiene una palabra aleatoria de la base de datos según el nivel
+     * @param nivel Nivel del juego (fácil, medio, difícil)
+     * @return Palabra aleatoria para el nivel especificado
+     */
     private String obtenerPalabraAleatoria(String nivel) {
         String palabra = "error";
         String sql = "SELECT palabra FROM palabras INNER JOIN niveles ON palabras.id_nivel = niveles.id WHERE niveles.nivel = ? ORDER BY RANDOM() LIMIT 1";
@@ -83,6 +123,10 @@ public class juegoController extends Conexion {
         return palabra.toLowerCase();
     }
 
+    /**
+     * Procesa el intento del usuario de adivinar una letra
+     * @param event Evento de acción del botón
+     */
     private void probarLetra(ActionEvent event) {
         String letra = inputLetra.getText().trim().toLowerCase();
         if (letra.length() != 1 || !letra.matches("[a-zA-ZñÑ]")) {
@@ -96,6 +140,7 @@ public class juegoController extends Conexion {
         }
 
         letrasUsadas.add(letraChar);
+        actualizarLetrasUsadas();
 
         boolean acierto = false;
         for (int i = 0; i < palabraSecreta.length(); i++) {
@@ -124,6 +169,10 @@ public class juegoController extends Conexion {
         inputLetra.clear();
     }
 
+    /**
+     * Cambia el nivel del usuario según el resultado del juego
+     * @param subir true si debe subir de nivel, false si debe bajar
+     */
     private void cambiarNivel(boolean subir) {
         int nivelActual;
         String nivelUsuario = usuario.getNivel().toLowerCase();
@@ -187,6 +236,11 @@ public class juegoController extends Conexion {
         nivelLabel.setText(usuario.getNivel());
     }
 
+    /**
+     * Muestra una alerta informativa al usuario
+     * @param titulo Título de la alerta
+     * @param contenido Mensaje de la alerta
+     */
     private void mostrarAlerta(String titulo, String contenido) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(titulo);
@@ -196,16 +250,23 @@ public class juegoController extends Conexion {
         
     }
 
+    /**
+     * Dibuja la base del ahorcado (estructura inicial)
+     */
     private void dibujarBase() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.setStroke(Color.BLACK);
-        gc.strokeLine(10, 190, 130, 190); // base
-        gc.strokeLine(30, 190, 30, 30); // palo vertical
-        gc.strokeLine(30, 30, 90, 30); // palo superior
-        gc.strokeLine(90, 30, 90, 50); // soga
+        gc.strokeLine(10, 190, 130, 190); 
+        gc.strokeLine(30, 190, 30, 30);
+        gc.strokeLine(30, 30, 90, 30); 
+        gc.strokeLine(90, 30, 90, 50); 
     }
 
+    /**
+     * Dibuja una parte del ahorcado según el número de error
+     * @param error Número de error actual (1-6)
+     */
     private void dibujarParte(int error) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setStroke(Color.BLACK);
@@ -214,38 +275,50 @@ public class juegoController extends Conexion {
                 gc.strokeOval(75, 50, 30, 30);
                 break;
             case 2:
-                gc.strokeLine(90, 80, 90, 130);
+                gc.strokeLine(90, 80, 90, 130); 
                 break;
             case 3:
-                gc.strokeLine(90, 90, 70, 110);
+                gc.strokeLine(90, 90, 70, 110); 
                 break;
             case 4:
                 gc.strokeLine(90, 90, 110, 110);
                 break;
             case 5:
-                gc.strokeLine(90, 130, 70, 160);
+                gc.strokeLine(90, 130, 70, 160); 
                 break;
             case 6:
-                gc.strokeLine(90, 130, 110, 160);
+                gc.strokeLine(90, 130, 110, 160); 
                 break;
             default:
                 break;
         }
     }
 
+    /**
+     * Reinicia el juego con una nueva palabra
+     * @param event Evento de acción del botón
+     */
     @FXML
     private void reiniciarJuego(ActionEvent event) {
         inicializarJuego();
     }
 
+    /**
+     * Navega de vuelta a la pantalla de perfil
+     * @param event Evento de acción del botón
+     */
     @FXML
     private void volverAPerfil(ActionEvent event) {
         try {
+          
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/franciscorodalf/juegoahorcado/perfil.fxml"));
             Parent root = loader.load();
 
+           
             perfilController controller = loader.getController();
             controller.setUsuario(usuario);
+            
+          
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();

@@ -7,17 +7,35 @@ import java.util.ArrayList;
 
 import es.franciscorodalf.juegoahorcado.backend.model.abstractas.Conexion;
 
+/**
+ * Clase de servicio para operaciones relacionadas con usuarios en la base de datos.
+ * Proporciona métodos para buscar, insertar y actualizar usuarios.
+ */
 public class UsuarioServiceModel extends Conexion {
 
+    /**
+     * Constructor por defecto que usa la ubicación predeterminada de la base de datos
+     */
     public UsuarioServiceModel() {
     }
 
+    /**
+     * Constructor que especifica la ruta a la base de datos
+     * @param unaRutaArchivoBD Ruta al archivo de base de datos SQLite
+     * @throws SQLException Si ocurre un error al conectar a la base de datos
+     */
     public UsuarioServiceModel(String unaRutaArchivoBD) throws SQLException {
         super(unaRutaArchivoBD);
     }
 
+    /**
+     * Busca un usuario por su nombre de usuario
+     * @param nombre Nombre de usuario a buscar
+     * @return UsuarioEntity si se encuentra, null si no existe
+     */
     public UsuarioEntity obtenerUsuarioPorNombre(String nombre) {
         try {
+            // Consulta SQL que une las tablas usuarios y niveles
             String sql = "SELECT u.email, u.user, u.password, n.nivel " +
                     "FROM usuarios u " +
                     "JOIN niveles n ON u.id_nivel = n.id " +
@@ -34,11 +52,18 @@ public class UsuarioServiceModel extends Conexion {
         }
     }
 
+    /**
+     * Busca un usuario por su correo o nombre de usuario
+     * @param informacion Email o nombre de usuario a buscar
+     * @return UsuarioEntity si se encuentra, null si no existe
+     */
     public UsuarioEntity obtenerDatosUsuario(String informacion) {
         try {
+            // Primero busca por email
             String sql = "SELECT * FROM usuarios WHERE email='" + informacion + "'";
             ArrayList<UsuarioEntity> usuarios = obtenerUsuario(sql);
             if (usuarios.isEmpty()) {
+                // Si no encuentra, busca por nombre de usuario
                 sql = "SELECT * FROM usuarios WHERE user='" + informacion + "'";
                 usuarios = obtenerUsuario(sql);
             }
@@ -54,6 +79,11 @@ public class UsuarioServiceModel extends Conexion {
         }
     }
 
+    /**
+     * Busca un usuario por su dirección de correo electrónico
+     * @param email Email del usuario a buscar
+     * @return UsuarioEntity si se encuentra, null si no existe
+     */
     public UsuarioEntity obtenerUsuarioPorEmail(String email) {
         try {
             String sql = "SELECT * FROM usuarios WHERE email='" + email + "'";
@@ -68,18 +98,30 @@ public class UsuarioServiceModel extends Conexion {
         }
     }
 
+    /**
+     * Obtiene todos los usuarios registrados en el sistema
+     * @return Lista de todos los usuarios
+     * @throws SQLException Si ocurre un error en la consulta SQL
+     */
     public ArrayList<UsuarioEntity> obtenerUsuarios() throws SQLException {
         String sql = "SELECT u.user, u.email, u.password, n.nivel " +
                 "FROM usuarios u JOIN niveles n ON u.id_nivel = n.id";
         return obtenerUsuario(sql);
     }
 
+    /**
+     * Método genérico para ejecutar consultas SQL que devuelven usuarios
+     * @param sql Consulta SQL a ejecutar
+     * @return Lista de usuarios que coinciden con la consulta
+     * @throws SQLException Si ocurre un error en la consulta SQL
+     */
     public ArrayList<UsuarioEntity> obtenerUsuario(String sql) throws SQLException {
         ArrayList<UsuarioEntity> usuarios = new ArrayList<>();
         try {
             PreparedStatement sentencia = getConnection().prepareStatement(sql);
             ResultSet resultado = sentencia.executeQuery();
 
+            // Recorrer los resultados y crear objetos UsuarioEntity
             while (resultado.next()) {
                 String nombreStr = resultado.getString("user");
                 String contraseniaStr = resultado.getString("password");
@@ -96,6 +138,12 @@ public class UsuarioServiceModel extends Conexion {
         return usuarios;
     }
 
+    /**
+     * Agrega un nuevo usuario a la base de datos
+     * @param usuario Objeto UsuarioEntity con los datos del nuevo usuario
+     * @return true si la inserción fue exitosa, false en caso contrario
+     * @throws SQLException Si ocurre un error en la operación SQL
+     */
     public boolean agregarUsuario(UsuarioEntity usuario) throws SQLException {
         if (usuario == null) {
             System.out.println("❌ Usuario es null, no se puede insertar.");
@@ -134,6 +182,11 @@ public class UsuarioServiceModel extends Conexion {
         return false;
     }
 
+    /**
+     * Actualiza el nivel de un usuario en la base de datos
+     * @param usuario Objeto UsuarioEntity con el nivel actualizado
+     * @throws SQLException Si ocurre un error en la operación SQL
+     */
     public void actualizarNivelUsuario(UsuarioEntity usuario) throws SQLException {
         String sql = "UPDATE usuarios SET id_nivel = ? WHERE email = ?";
         PreparedStatement ps = getConnection().prepareStatement(sql);

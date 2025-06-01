@@ -7,6 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Clase principal que inicia la aplicación del Juego del Ahorcado.
+ * Extiende de Application para crear una aplicación JavaFX.
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -17,6 +21,10 @@ public class Main extends Application {
         stage.show();
     }
 
+    /**
+     * Método principal que inicia la aplicación JavaFX
+     * @param args Argumentos de línea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
         launch();
     }

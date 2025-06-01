@@ -19,6 +19,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 
+/**
+ * Controlador para la pantalla de registro de usuarios.
+ * Maneja la validación y creación de nuevos usuarios en el sistema.
+ */
 public class registroController {
 
     @FXML
@@ -34,6 +38,10 @@ public class registroController {
 
     private UsuarioServiceModel servicioUsuario;
 
+    /**
+     * Método de inicialización que se ejecuta al cargar la pantalla de registro.
+     * Configura la conexión con la base de datos para el registro de usuarios.
+     */
     @FXML
     public void initialize() {
         try {
@@ -48,6 +56,13 @@ public class registroController {
         }
     }
 
+    /**
+     * Maneja el evento del botón Registrar.
+     * Valida que todos los campos sean correctos y registra al nuevo usuario
+     * en la base de datos si pasa todas las validaciones.
+     * 
+     * @param event El evento de acción que desencadenó este método
+     */
     @FXML
     private void handleRegistrar(ActionEvent event) {
         String username = usernameField.getText().trim();
@@ -90,11 +105,24 @@ public class registroController {
         }
     }
 
+    /**
+     * Maneja el evento del botón Cancelar.
+     * Cierra la pantalla de registro y vuelve a la pantalla de login.
+     * 
+     * @param event El evento de acción que desencadenó este método
+     * @throws IOException Si ocurre un error al cargar la pantalla de login
+     */
     @FXML
     private void handleCancelar(ActionEvent event) throws IOException {
         volverAlLogin(event);
     }
 
+    /**
+     * Navega de vuelta a la pantalla de inicio de sesión.
+     * 
+     * @param event El evento desde el cual se obtiene la ventana actual
+     * @throws IOException Si ocurre un error al cargar la pantalla de login
+     */
     private void volverAlLogin(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/franciscorodalf/juegoahorcado/login.fxml"));
         Parent root = loader.load();
@@ -103,6 +131,13 @@ public class registroController {
         stage.show();
     }
 
+    /**
+     * Muestra una alerta con la información proporcionada.
+     * 
+     * @param tipo El tipo de alerta (información, advertencia, error)
+     * @param titulo El título de la ventana de alerta
+     * @param mensaje El mensaje a mostrar en la alerta
+     */
     private void mostrarAlerta(AlertType tipo, String titulo, String mensaje) {
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);

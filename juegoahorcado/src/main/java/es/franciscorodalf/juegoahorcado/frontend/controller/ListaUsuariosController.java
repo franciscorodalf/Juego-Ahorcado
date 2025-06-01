@@ -38,7 +38,6 @@ public class ListaUsuariosController {
 
     @FXML
     public void initialize() {
-        // Vincular columnas con los getters de UsuarioEntity
         colUsuario.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colNivel.setCellValueFactory(new PropertyValueFactory<>("nivel"));
