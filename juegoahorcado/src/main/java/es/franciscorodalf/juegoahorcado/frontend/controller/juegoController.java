@@ -256,11 +256,28 @@ public class juegoController extends Conexion {
     private void dibujarBase() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        gc.setStroke(Color.BLACK);
-        gc.strokeLine(10, 190, 130, 190); 
-        gc.strokeLine(30, 190, 30, 30);
-        gc.strokeLine(30, 30, 90, 30); 
-        gc.strokeLine(90, 30, 90, 50); 
+        
+        // Fondo suave
+        gc.setFill(Color.rgb(248, 249, 250));
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        
+        // Configuración de líneas
+        gc.setStroke(Color.rgb(60, 99, 130));
+        gc.setLineWidth(3);
+        
+        // Base horizontal
+        gc.strokeLine(30, 200, 170, 200);
+        
+        // Poste vertical
+        gc.strokeLine(50, 200, 50, 30);
+        
+        // Soporte superior
+        gc.strokeLine(50, 30, 120, 30);
+        
+        // Cuerda
+        gc.setStroke(Color.rgb(193, 154, 107));
+        gc.setLineWidth(2);
+        gc.strokeLine(120, 30, 120, 50);
     }
 
     /**
@@ -269,27 +286,54 @@ public class juegoController extends Conexion {
      */
     private void dibujarParte(int error) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.BLACK);
+        
         switch (error) {
             case 1:
-                gc.strokeOval(75, 50, 30, 30);
+                // Cabeza
+                gc.setStroke(Color.rgb(44, 62, 80));
+                gc.setLineWidth(2);
+                gc.strokeOval(105, 50, 30, 30);
                 break;
             case 2:
-                gc.strokeLine(90, 80, 90, 130); 
+                // Cuerpo
+                gc.setStroke(Color.rgb(44, 62, 80));
+                gc.setLineWidth(2);
+                gc.strokeLine(120, 80, 120, 130);
                 break;
             case 3:
-                gc.strokeLine(90, 90, 70, 110); 
+                // Brazo izquierdo
+                gc.setStroke(Color.rgb(44, 62, 80));
+                gc.setLineWidth(2);
+                gc.strokeLine(120, 90, 95, 110);
                 break;
             case 4:
-                gc.strokeLine(90, 90, 110, 110);
+                // Brazo derecho
+                gc.setStroke(Color.rgb(44, 62, 80));
+                gc.setLineWidth(2);
+                gc.strokeLine(120, 90, 145, 110);
                 break;
             case 5:
-                gc.strokeLine(90, 130, 70, 160); 
+                // Pierna izquierda
+                gc.setStroke(Color.rgb(44, 62, 80));
+                gc.setLineWidth(2);
+                gc.strokeLine(120, 130, 95, 170);
                 break;
             case 6:
-                gc.strokeLine(90, 130, 110, 160); 
-                break;
-            default:
+                // Pierna derecha
+                gc.setStroke(Color.rgb(44, 62, 80));
+                gc.setLineWidth(2);
+                gc.strokeLine(120, 130, 145, 170);
+                
+                // Cara triste en el último error
+                gc.setStroke(Color.RED);
+                gc.setLineWidth(1);
+                // Ojos X
+                gc.strokeLine(110, 60, 117, 67);
+                gc.strokeLine(117, 60, 110, 67);
+                gc.strokeLine(123, 60, 130, 67);
+                gc.strokeLine(130, 60, 123, 67);
+                // Boca triste
+                gc.strokeArc(110, 70, 20, 10, 0, 180, javafx.scene.shape.ArcType.OPEN);
                 break;
         }
     }

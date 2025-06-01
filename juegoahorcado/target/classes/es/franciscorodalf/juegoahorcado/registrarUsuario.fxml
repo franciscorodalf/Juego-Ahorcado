@@ -3,24 +3,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
+<?import java.net.URL?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.registroController"
-            prefWidth="300" prefHeight="550" style="-fx-background-color: white;">
+            prefWidth="350" prefHeight="550" styleClass="anchor-pane">
     
-    <VBox alignment="CENTER" spacing="15" layoutX="25" layoutY="20" prefWidth="250">
+    <VBox alignment="CENTER" spacing="18" styleClass="register-container" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
 
-        <Label text="Registro de Usuario" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+        <Label text="Registro de Usuario" styleClass="title-label" />
 
-        <TextField fx:id="usernameField" promptText="Usuario" maxWidth="200"/>
-        <TextField fx:id="emailField" promptText="Correo electrónico" maxWidth="200"/>
-        <TextField fx:id="confirmEmailField" promptText="Confirmar correo" maxWidth="200"/>
-        <PasswordField fx:id="passwordField" promptText="Contraseña" maxWidth="200"/>
-        <PasswordField fx:id="confirmPasswordField" promptText="Confirmar contraseña" maxWidth="200"/>
+        <TextField fx:id="usernameField" promptText="Nombre de usuario" styleClass="register-field" maxWidth="250"/>
+        <TextField fx:id="emailField" promptText="Correo electrónico" styleClass="register-field" maxWidth="250"/>
+        <TextField fx:id="confirmEmailField" promptText="Confirmar correo" styleClass="register-field" maxWidth="250"/>
+        <PasswordField fx:id="passwordField" promptText="Contraseña" styleClass="register-field" maxWidth="250"/>
+        <PasswordField fx:id="confirmPasswordField" promptText="Confirmar contraseña" styleClass="register-field" maxWidth="250"/>
 
-        <Button text="Registrar" fx:id="btnRegistrar" onAction="#handleRegistrar" maxWidth="200"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
-        <Button text="Cancelar" fx:id="btnCancelar" onAction="#handleCancelar" maxWidth="200"
-                style="-fx-background-color: #888; -fx-text-fill: white;" />
+        <HBox spacing="20" alignment="CENTER" styleClass="register-buttons">
+            <Button text="Registrar" fx:id="btnRegistrar" onAction="#handleRegistrar" prefWidth="120" styleClass="confirm-button" />
+            <Button text="Cancelar" fx:id="btnCancelar" onAction="#handleCancelar" prefWidth="120" styleClass="cancel-button" />
+        </HBox>
     </VBox>
+    
+    <stylesheets>
+        <URL value="@../../../css/main.css" />
+    </stylesheets>
 </AnchorPane>

@@ -1,0 +1,64 @@
+/* Estilos específicos para la pantalla de login */
+.login-container {
+    -fx-spacing: 15;
+    -fx-padding: 30 40;
+    -fx-alignment: center;
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 4);
+}
+
+.login-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-primary-dark;
+    -fx-padding: 0 0 20 0;
+}
+
+.login-field-container {
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+
+.login-button {
+    -fx-background-color: -color-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.login-button:hover {
+    -fx-background-color: -color-primary-dark;
+}
+
+.register-button {
+    -fx-background-color: -color-secondary;
+    -fx-text-fill: white;
+}
+
+.register-button:hover {
+    -fx-background-color: derive(-color-secondary, -10%);
+}
+
+.recover-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-primary;
+    -fx-underline: true;
+    -fx-border-color: transparent;
+}
+
+.recover-button:hover {
+    -fx-text-fill: -color-primary-dark;
+}
+
+.login-header {
+    -fx-background-color: -color-primary;
+    -fx-padding: 15;
+    -fx-background-radius: 15 15 0 0;
+}
+
+.login-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}

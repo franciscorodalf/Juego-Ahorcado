@@ -15,9 +15,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 300, 400);
-        stage.setTitle("Pantalla Princial");
+        Scene scene = new Scene(fxmlLoader.load(), 350, 500);
+        stage.setTitle("Juego del Ahorcado");
         stage.setScene(scene);
+        stage.setResizable(false); // Hace que la ventana no sea redimensionable
         stage.show();
     }
 
