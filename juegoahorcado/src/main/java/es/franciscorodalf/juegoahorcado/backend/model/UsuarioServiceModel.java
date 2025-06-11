@@ -189,8 +189,25 @@ public class UsuarioServiceModel extends Conexion {
      */
     public void actualizarNivelUsuario(UsuarioEntity usuario) throws SQLException {
         String sql = "UPDATE usuarios SET id_nivel = ? WHERE email = ?";
+
+        int nivelId;
+        switch (usuario.getNivel().toLowerCase()) {
+            case "facil":
+                nivelId = 1;
+                break;
+            case "medio":
+                nivelId = 2;
+                break;
+            case "dificil":
+                nivelId = 3;
+                break;
+            default:
+                nivelId = 1;
+                break;
+        }
+
         PreparedStatement ps = getConnection().prepareStatement(sql);
-        ps.setString(1, usuario.getNivel());
+        ps.setInt(1, nivelId);
         ps.setString(2, usuario.getEmail());
         ps.executeUpdate();
         cerrar();
