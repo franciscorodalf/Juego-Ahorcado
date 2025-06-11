@@ -38,14 +38,13 @@ public class loginController {
     @FXML
     public void initialize() {
         try {
-            URL dbUrl = getClass().getResource("/database/usuarios.db");
-            if (dbUrl != null) {
-                String path = new File(dbUrl.toURI()).getAbsolutePath();
-                servicioUsuario = new UsuarioServiceModel(path);
-            } else {
-                System.err.println("❌ No se encontró la base de datos.");
-            }
+            // Simplemente creamos una instancia de UsuarioServiceModel
+            // La lógica de conexión está ahora en la clase Conexion
+            servicioUsuario = new UsuarioServiceModel();
+            System.out.println("✅ Servicio de usuarios inicializado correctamente");
         } catch (Exception e) {
+            mostrarAlerta(AlertType.ERROR, "Error de conexión", 
+                    "No se pudo establecer conexión con la base de datos: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -86,7 +85,13 @@ public class loginController {
      */
     @FXML
     private void handleRegistrar(ActionEvent event) throws IOException {
-        cambiarEscena(event, "/es/franciscorodalf/juegoahorcado/registrarUsuario.fxml");
+        try {
+            cambiarEscena(event, "/es/franciscorodalf/juegoahorcado/registrarUsuario.fxml");
+        } catch (IOException e) {
+            mostrarAlerta(AlertType.ERROR, "Error de navegación", 
+                    "No se pudo cargar la pantalla de registro: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -116,11 +121,17 @@ public class loginController {
      * @throws IOException Si ocurre un error al cargar la nueva pantalla
      */
     private void cambiarEscena(ActionEvent event, String fxmlPath) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("❌ Error al cargar la vista: " + fxmlPath);
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     /**

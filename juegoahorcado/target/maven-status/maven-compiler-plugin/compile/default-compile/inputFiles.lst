@@ -1,13 +1,14 @@
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/Main.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/PalabraServiceModel.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/UsuarioEntity.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/UsuarioServiceModel.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/abstractas/Conexion.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/config/ConfigManager.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/ListaUsuariosController.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/RecuperarController.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/editarUsuarioController.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/juegoController.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/loginController.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/perfilController.java
-/Users/fran/Documents/GitHub/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/registroController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/Main.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/PalabraServiceModel.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/UsuarioEntity.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/UsuarioServiceModel.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/model/abstractas/Conexion.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/backend/util/DbInitializer.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/config/ConfigManager.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/ListaUsuariosController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/RecuperarController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/editarUsuarioController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/juegoController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/loginController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/perfilController.java
+/Users/fran/Desktop/Github projects/Juego-Ahorcado/juegoahorcado/src/main/java/es/franciscorodalf/juegoahorcado/frontend/controller/registroController.java

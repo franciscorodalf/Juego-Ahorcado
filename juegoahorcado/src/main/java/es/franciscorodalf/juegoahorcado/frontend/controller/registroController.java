@@ -45,13 +45,13 @@ public class registroController {
     @FXML
     public void initialize() {
         try {
-            URL dbUrl = getClass().getResource("/database/usuarios.db");
-            if (dbUrl != null) {
-                servicioUsuario = new UsuarioServiceModel(dbUrl.getPath());
-            } else {
-                mostrarAlerta(AlertType.ERROR, "Error", "No se encontró la base de datos.");
-            }
-        } catch (SQLException e) {
+            // Simplemente creamos una instancia sin parámetros
+            // La lógica de conexión a la BD está ahora en la clase Conexion
+            servicioUsuario = new UsuarioServiceModel();
+            System.out.println("✅ Servicio de usuarios inicializado correctamente en registroController");
+        } catch (Exception e) {
+            mostrarAlerta(AlertType.ERROR, "Error de conexión", 
+                    "No se pudo establecer conexión con la base de datos: " + e.getMessage());
             e.printStackTrace();
         }
     }
