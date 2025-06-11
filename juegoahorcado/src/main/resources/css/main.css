@@ -127,7 +127,3 @@
     -fx-text-fill: #6c757d;
 }
 
-/* Estilos para animaciones y transiciones */
-.animated-button {
-    -fx-transition: -fx-background-color 0.3s ease;
-}
