@@ -79,3 +79,9 @@
 .restart-button:hover {
     -fx-background-color: derive(-color-secondary, -10%);
 }
+
+/* Label para mostrar mensajes de error en la pantalla de juego */
+.error-label {
+    -fx-text-fill: -color-error;
+    -fx-font-weight: bold;
+}

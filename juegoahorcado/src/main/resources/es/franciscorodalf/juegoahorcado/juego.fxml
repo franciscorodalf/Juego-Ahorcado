@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.franciscorodalf.juegoahorcado.frontend.controller.juegoController">
 
-    <VBox alignment="CENTER" layoutX="10.0" layoutY="11.0" spacing="15" styleClass="game-container" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="11.0">
+    <VBox alignment="CENTER" layoutX="10.0" layoutY="11.0" spacing="15" styleClass="game-container" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="11.0" AnchorPane.bottomAnchor="11.0">
         
         <!-- Datos del usuario -->
         <HBox spacing="30" styleClass="user-info">
@@ -38,6 +38,8 @@
             <TextField fx:id="inputLetra" maxWidth="70.0" prefHeight="40.0" promptText="Letra" styleClass="letter-input" />
             <Button fx:id="btnProbar" prefHeight="40.0" prefWidth="100.0" text="Probar" styleClass="try-button" />
         </HBox>
+        <!-- Mensajes de error -->
+        <Label fx:id="errorLabel" text="" styleClass="error-label" />
 
         <!-- Letras usadas -->
         <VBox alignment="CENTER" spacing="5" styleClass="used-letters-container">

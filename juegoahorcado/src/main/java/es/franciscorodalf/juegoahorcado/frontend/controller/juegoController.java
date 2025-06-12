@@ -41,9 +41,11 @@ public class juegoController extends Conexion {
     @FXML
     private Canvas canvas;          
     @FXML
-    private Button btnProbar;         
+    private Button btnProbar;
     @FXML
-    private Label letrasUsadasLabel; 
+    private Label letrasUsadasLabel;
+    @FXML
+    private Label errorLabel;
 
     private UsuarioEntity usuario;          
     private String palabraSecreta;           
@@ -58,6 +60,9 @@ public class juegoController extends Conexion {
     @FXML
     public void initialize() {
         btnProbar.setOnAction(this::probarLetra);
+        if (errorLabel != null) {
+            errorLabel.setText("");
+        }
     }
 
     /**
@@ -84,6 +89,9 @@ public class juegoController extends Conexion {
         errores = 0;
         letrasUsadas.clear();
         actualizarLetrasUsadas();
+        if (errorLabel != null) {
+            errorLabel.setText("");
+        }
         dibujarBase();
     }
 
@@ -129,15 +137,24 @@ public class juegoController extends Conexion {
      */
     private void probarLetra(ActionEvent event) {
         String letra = inputLetra.getText().trim().toLowerCase();
-        if (letra.length() != 1 || !letra.matches("[a-zA-ZñÑ]")) {
-            mostrarAlerta("Letra no válida", "Introduce solo una letra.");
+        if (letra.isEmpty()) {
+            mostrarError("No has ingresado ninguna letra");
+            return;
+        }
+        if (letra.length() > 1) {
+            mostrarError("Ingresa solo una letra");
+            return;
+        }
+        if (!letra.matches("[a-zA-ZñÑ]")) {
+            mostrarError("Carácter no válido");
             return;
         }
         char letraChar = letra.charAt(0);
         if (letrasUsadas.contains(letraChar)) {
-            mostrarAlerta("Letra repetida", "Ya has usado esa letra.");
+            mostrarError("Ya has usado esa letra");
             return;
         }
+        mostrarError("");
 
         letrasUsadas.add(letraChar);
         actualizarLetrasUsadas();
@@ -247,7 +264,17 @@ public class juegoController extends Conexion {
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
-        
+
+    }
+
+    /**
+     * Muestra un mensaje de error en la interfaz de juego
+     * @param mensaje Texto a mostrar
+     */
+    private void mostrarError(String mensaje) {
+        if (errorLabel != null) {
+            errorLabel.setText(mensaje);
+        }
     }
 
     /**
