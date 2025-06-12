@@ -31,11 +31,17 @@
 }
 
 .word-display-label {
-    -fx-font-size: 24px;
+    -fx-font-size: 22px;
     -fx-font-family: 'Courier New', monospace;
     -fx-font-weight: bold;
-    -fx-letter-spacing: 5px;
-    -fx-padding: 15 5;
+    -fx-letter-spacing: 2px;
+    -fx-padding: 15px;
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 5px;
+    -fx-min-width: 300px;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
 }
 
 .letter-input {

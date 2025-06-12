@@ -81,11 +81,17 @@ public class juegoController extends Conexion {
      */
     private void inicializarJuego() {
         palabraSecreta = obtenerPalabraAleatoria(usuario.getNivel());
-        palabraOculta = new StringBuilder("_");
-        for (int i = 1; i < palabraSecreta.length(); i++) {
-            palabraOculta.append(" _");
+        
+        // Crear la palabra oculta con mejor visualización
+        palabraOculta = new StringBuilder();
+        for (int i = 0; i < palabraSecreta.length(); i++) {
+            if (i > 0) {
+                palabraOculta.append(" ");
+            }
+            palabraOculta.append("_");
         }
-        palabraLabel.setText("Palabra: " + palabraOculta);
+        
+        palabraLabel.setText(palabraOculta.toString());
         errores = 0;
         letrasUsadas.clear();
         actualizarLetrasUsadas();
@@ -160,14 +166,26 @@ public class juegoController extends Conexion {
         actualizarLetrasUsadas();
 
         boolean acierto = false;
+        StringBuilder palabraActualizada = new StringBuilder();
+        
         for (int i = 0; i < palabraSecreta.length(); i++) {
+            // Añadir espacio entre caracteres excepto antes del primer caracter
+            if (i > 0) {
+                palabraActualizada.append(" ");
+            }
+            
             if (palabraSecreta.charAt(i) == letraChar) {
-                palabraOculta.setCharAt(i * 2, letraChar);
+                palabraActualizada.append(letraChar);
                 acierto = true;
+            } else {
+                // Conservar letras ya descubiertas o mantener guión
+                char charEnPosicion = palabraOculta.charAt(i * 2 > 0 ? i * 2 : i);
+                palabraActualizada.append(charEnPosicion == '_' ? '_' : palabraSecreta.charAt(i));
             }
         }
-
-        palabraLabel.setText("Palabra: " + palabraOculta);
+        
+        palabraOculta = palabraActualizada;
+        palabraLabel.setText(palabraOculta.toString());
 
         if (!acierto) {
             errores++;
